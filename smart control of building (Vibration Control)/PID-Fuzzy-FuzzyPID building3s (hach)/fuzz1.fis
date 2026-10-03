@@ -1,0 +1,49 @@
+[System]
+Name='fuzz1'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='e'
+Range=[-0.15 0.15]
+NumMFs=3
+MF1='N':'trapmf',[-1 -0.5 -0.15 -0.02]
+MF2='Z':'trimf',[-0.05 0 0.05]
+MF3='P':'trapmf',[0.02 0.15 0.5 1]
+
+[Input2]
+Name='de'
+Range=[-30 30]
+NumMFs=3
+MF1='N':'trapmf',[-60 -30 -30 -6]
+MF2='Z':'trimf',[-12 0 12]
+MF3='P':'trapmf',[6 30 30 60]
+
+[Output1]
+Name='force'
+Range=[-1000 1000]
+NumMFs=5
+MF1='N':'trapmf',[-1500 -1200 -1000 -700]
+MF2='NM':'trimf',[-900 -500 -100]
+MF3='ZO':'trimf',[-200 0 200]
+MF4='PM':'trimf',[100 500 900]
+MF5='P':'trapmf',[700 1000 1200 1500]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 2 (1) : 1
+1 3, 3 (1) : 1
+2 1, 2 (1) : 1
+2 2, 3 (1) : 1
+2 3, 4 (1) : 1
+3 1, 3 (1) : 1
+3 2, 4 (1) : 1
+3 3, 5 (1) : 1
